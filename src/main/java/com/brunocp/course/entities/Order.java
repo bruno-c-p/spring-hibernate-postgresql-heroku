@@ -55,6 +55,10 @@ public class Order implements Serializable {
 		setOrderStatus(orderStatus);
 		this.client = client;
 	}
+	
+	public Double getTotal() {
+		return items.stream().map(item -> item.getSubTotal()).reduce(0.0, (a, b) -> a + b);
+	}
 
 	@Override
 	public int hashCode() {
